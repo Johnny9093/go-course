@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+	"fmt"
 	"math"
 )
 
@@ -86,4 +87,25 @@ func main(){
 	//for _, v := range slc {
 	//	fmt.Println(v) // v = values
 	//}
+
+	myMap := make(map[string]int) // dic<string, int>
+	myMap["first"] = 3
+	myMap["second"] = 10
+
+	fmt.Println(myMap)
+
+	delete(myMap, "first")
+
+	for k, v := range myMap {
+		fmt.Println(k, v)
+	}
+
+	fmt.Println(myMap["first"]) // = 0, but it doesnt actualy exist
+	v, ok := myMap["first"]
+	fmt.Println(v, ok) // ok = false, it does not exist
+
+	if val, ok2 := myMap["first"]; ok2 { // ok2 is the actualy condition, after the semicolon
+		fmt.Println(val)
+	}
+	// val and ok2 are dead here
 }
