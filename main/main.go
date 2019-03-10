@@ -2,7 +2,6 @@ package main
 
 import (
 	"errors"
-	"fmt"
 	"math"
 )
 
@@ -58,9 +57,33 @@ func main(){
 	//fmt.Println(len(slc))
 	//fmt.Println(cap(slc))
 
-	slc := []int{1,2,3,4,5} // slice because size isnt stated explicitly
-	slc = append(slc, 6)
-	fmt.Println(slc)
-	fmt.Println(len(slc))
-	fmt.Println(cap(slc))
+	//slc := []int{1,2,3,4,5} // slice because size isnt stated explicitly
+	//slc = append(slc, 6)
+	//fmt.Println(slc)
+	//fmt.Println(len(slc))
+	//fmt.Println(cap(slc))
+
+	//slc := make([]int, 3, 5) // make slice of ints, length 3 and cap 5
+	//slc = append(slc, 1)
+	//slc = append(slc, 2)
+	//slc = append(slc, 3) // capacity doubles
+	//
+	//fmt.Println(slc)
+	//fmt.Println(len(slc))
+	//fmt.Println(cap(slc))
+	//
+	//slc2 := []int {4,5}
+	//slc = append(slc, slc2...) // spread operator - opens up all of the initialized values of slc2
+	//
+	//for i := range slc { // i = indices
+	//	fmt.Println(i)
+	//}
+	//
+	//for k, v := range slc {
+	//	fmt.Println(k, v) // key = index / key
+	//}
+	//
+	//for _, v := range slc {
+	//	fmt.Println(v) // v = values
+	//}
 }
