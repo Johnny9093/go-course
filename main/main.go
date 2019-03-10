@@ -39,9 +39,28 @@ func main(){
 	//_, r2 := divide(a, b) // not using first return value
 	//println(r2)
 
-	root, err := root(9)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(root)
+	//root, err := root(9)
+	//if err != nil {
+	//	panic(err)
+	//}
+	//fmt.Println(root)
+
+	// arr := [3] int {1,2,3}
+	//arr := [...] int {1,2,3,4,5}
+	//slc := arr[:]
+	//slc[2] = 15 // changes arr since it points to the same array
+	//
+	//fmt.Println(arr)
+	//fmt.Println(len(arr))
+	//fmt.Println(cap(arr))
+	//
+	//fmt.Println(slc)
+	//fmt.Println(len(slc))
+	//fmt.Println(cap(slc))
+
+	slc := []int{1,2,3,4,5} // slice because size isnt stated explicitly
+	slc = append(slc, 6)
+	fmt.Println(slc)
+	fmt.Println(len(slc))
+	fmt.Println(cap(slc))
 }
