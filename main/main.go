@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+	"fmt"
 	"math"
 )
 
@@ -38,10 +39,9 @@ func main(){
 	//_, r2 := divide(a, b) // not using first return value
 	//println(r2)
 
-	root, err := root(-1)
-	if err == nil {
-		println(root)
-	} else {
-		println(err.Error())
+	root, err := root(9)
+	if err != nil {
+		panic(err)
 	}
+	fmt.Println(root)
 }
