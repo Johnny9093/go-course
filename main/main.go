@@ -2,7 +2,6 @@ package main
 
 import (
 	"errors"
-	"fmt"
 	"math"
 )
 
@@ -109,15 +108,42 @@ func main(){
 	//}
 	//// val and ok2 are dead here
 
-	var fib = getFib()
-	fmt.Println(fib())
-	fmt.Println(fib())
-	fmt.Println(fib())
-	fmt.Println(fib())
-	fmt.Println(fib())
-	fmt.Println(fib())
-	fmt.Println(fib())
-	fmt.Println(fib())
+	//var fib = getFib()
+	//fmt.Println(fib())
+	//fmt.Println(fib())
+	//fmt.Println(fib())
+	//fmt.Println(fib())
+	//fmt.Println(fib())
+	//fmt.Println(fib())
+	//fmt.Println(fib())
+	//fmt.Println(fib())
+
+	// shortened if
+	if i := 4; i < 15 {
+
+	} // i dies here
+
+	if i := 4; i < 15 {
+	} else { // works
+	}
+	//else { // compilation error
+	//}
+
+	switch i := 5; i {
+	case 5:
+		println(i)
+		fallthrough // break is default not necessary, in stead use explicit fallthrough
+	default:
+		println("Unknown value")
+	}
+
+	// anti-switch, easier way to write ifs
+	i := 3
+	switch {
+	case i < 4:
+	case i == 4:
+	case i > 4:
+	}
 }
 
 // clojures
