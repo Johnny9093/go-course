@@ -88,24 +88,47 @@ func main(){
 	//	fmt.Println(v) // v = values
 	//}
 
-	myMap := make(map[string]int) // dic<string, int>
-	myMap["first"] = 3
-	myMap["second"] = 10
+	//myMap := make(map[string]int) // dic<string, int>
+	//myMap["first"] = 3
+	//myMap["second"] = 10
+	//
+	//fmt.Println(myMap)
+	//
+	//delete(myMap, "first")
+	//
+	//for k, v := range myMap {
+	//	fmt.Println(k, v)
+	//}
+	//
+	//fmt.Println(myMap["first"]) // = 0, but it doesnt actualy exist
+	//v, ok := myMap["first"]
+	//fmt.Println(v, ok) // ok = false, it does not exist
+	//
+	//if val, ok2 := myMap["first"]; ok2 { // ok2 is the actualy condition, after the semicolon
+	//	fmt.Println(val)
+	//}
+	//// val and ok2 are dead here
 
-	fmt.Println(myMap)
+	var fib = getFib()
+	fmt.Println(fib())
+	fmt.Println(fib())
+	fmt.Println(fib())
+	fmt.Println(fib())
+	fmt.Println(fib())
+	fmt.Println(fib())
+	fmt.Println(fib())
+	fmt.Println(fib())
+}
 
-	delete(myMap, "first")
+// clojures
+func getFib() func() int {
 
-	for k, v := range myMap {
-		fmt.Println(k, v)
+	first := 0
+	second := 1
+
+	return func() int {
+		res := first
+		first, second = second, first + second;
+		return res;
 	}
-
-	fmt.Println(myMap["first"]) // = 0, but it doesnt actualy exist
-	v, ok := myMap["first"]
-	fmt.Println(v, ok) // ok = false, it does not exist
-
-	if val, ok2 := myMap["first"]; ok2 { // ok2 is the actualy condition, after the semicolon
-		fmt.Println(val)
-	}
-	// val and ok2 are dead here
 }
