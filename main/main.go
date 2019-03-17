@@ -21,6 +21,27 @@ func root(num float64) (root float64, error error) {
 	return
 }
 
+// clojures
+func getFib() func() int {
+
+	first := 0
+	second := 1
+
+	return func() int {
+		res := first
+		first, second = second, first + second;
+		return res;
+	}
+}
+
+func panicAttack(a, b int) float64 {
+	if b == 0 {
+		panic("division by zero")
+	}
+
+	return float64(a) / float64(b)
+}
+
 func main(){
 	// var name string = "Yoni"
 	// var name string
@@ -118,43 +139,45 @@ func main(){
 	//fmt.Println(fib())
 	//fmt.Println(fib())
 
-	// shortened if
-	if i := 4; i < 15 {
-
-	} // i dies here
-
-	if i := 4; i < 15 {
-	} else { // works
-	}
-	//else { // compilation error
+	//// shortened if
+	//if i := 4; i < 15 {
+	//
+	//} // i dies here
+	//
+	//if i := 4; i < 15 {
+	//} else { // works
+	//}
+	////else { // compilation error
+	////}
+	//
+	//switch i := 5; i {
+	//case 5:
+	//	println(i)
+	//	fallthrough // break is default not necessary, in stead use explicit fallthrough
+	//default:
+	//	println("Unknown value")
+	//}
+	//
+	//// anti-switch, easier way to write ifs
+	//i := 3
+	//switch {
+	//case i < 4:
+	//case i == 4:
+	//case i > 4:
 	//}
 
-	switch i := 5; i {
-	case 5:
-		println(i)
-		fallthrough // break is default not necessary, in stead use explicit fallthrough
-	default:
-		println("Unknown value")
-	}
+	// exception handling
+	// panics are only for severe situations (db connection lost etc)
+	//a, b := 8, 2
+	//println(a, b)
 
-	// anti-switch, easier way to write ifs
-	i := 3
-	switch {
-	case i < 4:
-	case i == 4:
-	case i > 4:
-	}
-}
-
-// clojures
-func getFib() func() int {
-
-	first := 0
-	second := 1
-
-	return func() int {
-		res := first
-		first, second = second, first + second;
-		return res;
-	}
+	//// defer is using a stack and runs at the end of the function
+	//defer func() {
+	//	if r := recover(); r != nil {
+	//		fmt.Println("recovered:", r)
+	//	}
+	//}()
+	//
+	//panic("oh no")
+	// ask about print orders!
 }
