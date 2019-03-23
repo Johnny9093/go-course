@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func main() {
+func Routines() {
 	// use channels to communicate between different go routines
 	cn := make(chan int, 10)
 	// cn <- 2 // push value to channel
