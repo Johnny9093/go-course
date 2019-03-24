@@ -180,4 +180,12 @@ func main(){
 	//
 	//panic("oh no")
 	// ask about print orders!
+
+
+
+
+	// lesson 3
+	// http stuff
+
+
 }
