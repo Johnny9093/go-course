@@ -2,6 +2,7 @@ package rate_limiter
 
 import (
 	"fmt"
+	"net/http"
 	"testing"
 	"time"
 )
@@ -86,4 +87,39 @@ func TestBucketTokenRateLimiter(t *testing.T) {
 	}(tokens, bucket)
 
 	time.Sleep(5 * time.Second)
+}
+
+func TestBucketRateLimitedHttp(t *testing.T) {
+
+	// Backend
+	backendRps := 1
+	burstSize := 4
+	tokens := time.Tick(time.Duration(1000 / backendRps) * time.Millisecond)
+	bucket := make(chan int, burstSize)
+
+	// Fill bucket
+	for i := 0; i < burstSize; i++ {
+		bucket <- 1
+	}
+
+	go func(tokens <-chan time.Time, bucket chan int) {
+		for range tokens {
+			bucket <- 1
+		}
+	}(tokens, bucket)
+
+	http.HandleFunc("/service", func(w http.ResponseWriter, r *http.Request) {
+		select {
+		case <- bucket:
+			w.WriteHeader(200)
+			w.Write([]byte("OK"))
+		default:
+			w.WriteHeader(429)
+			w.Write([]byte("Rate Limit Exceeded"))
+		}
+	})
+
+	http.ListenAndServe(":8080", nil)
+
+	// http.ListenAndServe(":8080", rateLimiterHandler) - all requests go through the handler, regardless of url
 }
